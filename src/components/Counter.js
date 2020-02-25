@@ -1,13 +1,17 @@
 import React from 'react';
 
 export default class Counter extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            count: props.initialCount
+      state = {
+            count: 0
         };
-    }
+
+        componentWillUnmount() {
+            console.log('unmounting...');
+        }
+
+        componentDidMount() {
+            console.log('mounting')
+        }
 
     handleAddButtonClick = () => {
         this.setState({
@@ -26,8 +30,10 @@ export default class Counter extends React.Component {
         <div>
             <div>
                 count: {this.state.count}
-                <button onClick={this.handleAddButtonClick}>increment</button>
-                <button onClick={this.handleSubButtonClick}>decrement</button>
+                <div>
+                    <button onClick={this.handleAddButtonClick}>increment</button>
+                    <button onClick={this.handleSubButtonClick}>decrement</button>
+                </div>
             </div>
         </div>
       );
